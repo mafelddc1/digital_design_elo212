@@ -21,12 +21,12 @@
 
 
 module fib_rec(
-    input logic [3:0] BCD_in,
-    output logic f
+    input  logic [3:0] BCD_in,
+    output logic       f
     );
     
     always_comb begin
-        if (BCD_in == 4'd0 || 
+        if (    BCD_in == 4'd0 || 
                 BCD_in == 4'd1 ||
                 BCD_in == 4'd2 ||
                 BCD_in == 4'd4 ||
