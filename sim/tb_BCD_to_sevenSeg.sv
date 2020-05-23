@@ -23,6 +23,7 @@
 module tb_BCD_to_sevenSeg();
     /*
         Cosas que tienes que corregir
+        - El tipo del DUT
         - El largo del vector de tests
         - La cantidad de bits de cada test (IN + OUT)
         - Si la salida es un vector, corrige el tipo de dato de 'expected'.
@@ -31,22 +32,22 @@ module tb_BCD_to_sevenSeg();
         -
     */
 
-    parameter testvector_length = 20;
+    parameter testvector_length = 100;
     parameter testvector_name = "BCD_to_sevenSeg.mem";
     parameter testvector_bits = 11;
 
     // Variables del simulador
     logic                       clk, reset;
-    logic [6:0]                 expected;
-    logic [31:0]                vectornum, errors;
+    logic [6:0]                 expected;   // Valor de salida esperado
+    logic [31:0]                vectornum, errors; // Iteradores de 32 bits
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
+                                    // El arreglo que contendrá los vectores
 
-    // Variables del DUT
+    // Variables del DUT - Design under Test
     logic [3:0]  BCD_in;
     logic [6:0]  y;
 
-    fib_rec DUT(
-            .BCD_in(BCD_in), .sevenSeg(y));
+    BCD_to_sevenSeg DUT(BCD_in, y);
 
     // Reloj, ajusta el periodo
     always begin
@@ -56,14 +57,13 @@ module tb_BCD_to_sevenSeg();
 
     // Obtención de datos, revisa instrucciones.md para ver como agregar el archivo al workspace
     initial begin
-
         $readmemb(testvector_name, testvector);
         vectornum = 0;
         errors = 0;
-        reset = 1;
+        reset = 1;  // Detiene la lógica de verificación, los resultados no van a cambiar con clk.
         clk = 0;
 
-        #10;
+        #14; // Esto es poco después del canto de bajada.
         reset = 0;
 
     end
@@ -76,7 +76,7 @@ module tb_BCD_to_sevenSeg();
     end
 
     // Canto Bajada -> Revisar salida
-    // Esto debería ser editado para ajustarse a los otros módulos, pero perfectamente puede quitarse.
+    // Esto debería ser editado para ajustarse a los otros módulos
     always @(negedge clk) begin
         if (~reset) begin
             $display("%t: BCD_in = %d, y = %b, expected = %b", $realtime, BCD_in, y, expected);
@@ -96,5 +96,4 @@ module tb_BCD_to_sevenSeg();
             end
         end
     end
-
 endmodule
