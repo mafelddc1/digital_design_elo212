@@ -52,14 +52,14 @@ Anódo común: AN{0-7}
 F   B
 ==G==
 E   C
-==D==
-|||||
+==D== H
+|||||||
 Varios Cátodos: C{A-G}
 ~~~
 
-Entonces:
-     ABCDEFG
-- 0: 1111110
+Entonces: //Esto hay que corregirlo
+     ABCDEFGH
+- 0: 00000011
 - 1: 0110000
 - 2: 1101101
 - 3: 1111001

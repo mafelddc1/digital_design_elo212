@@ -26,7 +26,7 @@ Descripción de sistemas TDM Time Division Multiplexing
 
 # 3 Actividades Guiadas
 ## 3.1 Uso de bloques combinacionales para lógica combinacional y secuencial síncrona
-Se dará una breve descripción del bloque procesdural combinacional y secuencial
+Se dará una breve descripción del bloque procedural combinacional y secuencial
 
 Se entregarán indicaciones sobre su uso en la descripción de código sintetizable con asignaciones bloqueantes y no bloqueantes.
 

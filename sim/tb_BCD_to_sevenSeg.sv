@@ -34,18 +34,18 @@ module tb_BCD_to_sevenSeg();
 
     parameter testvector_length = 100;
     parameter testvector_name = "BCD_to_sevenSeg.mem";
-    parameter testvector_bits = 11;
+    parameter testvector_bits = 12;
 
     // Variables del simulador
     logic                       clk, reset;
-    logic [6:0]                 expected;   // Valor de salida esperado
+    logic [7:0]                 expected;   // Valor de salida esperado
     logic [31:0]                vectornum, errors; // Iteradores de 32 bits
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
                                     // El arreglo que contendrá los vectores
 
     // Variables del DUT - Design under Test
     logic [3:0]  BCD_in;
-    logic [6:0]  y;
+    logic [7:0]  y;
 
     BCD_to_sevenSeg DUT(BCD_in, y);
 

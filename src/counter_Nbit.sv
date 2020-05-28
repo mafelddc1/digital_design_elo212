@@ -27,7 +27,7 @@ module counter_Nbit #(parameter N=4)(
 
     always_ff @(posedge clk) begin
         if (reset) begin
-            count <= 4'b0;
+            count <= 'b0;
         end
         else begin
             count <= count+1;
