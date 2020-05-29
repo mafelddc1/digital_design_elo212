@@ -5,10 +5,10 @@ module mux_4 #(parameter width=8)(
         input  logic [1:0]       s,
         output logic [width-1:0] y);
 
-    logic [widht-1:0] low, hi;
+    logic [width-1:0] low, hi;
 
-    mux2 #(width) lowmux(d0,  d1, s[0], low);
-    mux2 #(width) himux (d2,  d3, s[0], hi );
-    mux2 #(width) outmux(low, hi, s[1], y  );
+    mux_2 #(width) lowmux(d0,  d1, s[0], low);
+    mux_2 #(width) himux (d2,  d3, s[0], hi );
+    mux_2 #(width) outmux(low, hi, s[1], y  );
 
 endmodule

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module counter_Nbit #(parameter N=4)(
+module counter_N #(parameter N=4)(
     input  logic          clk, reset,
     output logic [N-1:0]  count
     );
